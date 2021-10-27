@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
-    'name': 'Doctor Appointment Management',
+    'name': 'Doctor Appointment vv Management',
     'version': '1.1',
     'summary': 'Doctor appointment management system',
     'sequence': -100,
