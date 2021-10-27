@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+ <record model="ir.ui.view" id="patient_list">
+        <field name="name">Patient list</field>
+        <field name="model">patient.form</field>
+        <field name="arch" type="xml">
+            <tree string="patient">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="birthdate"/>
+                <field name="ph_no"/>
+                <field name="gender"/>
+                <field name="address"/>
+
+
+            </tree>
+        </field>
+    </record>
+<!--wizard code-->
+     <record id="xls_report_form" model="ir.ui.view">
+            <field name="name">xls.report.form</field>
+            <field name="model">patient.wiz</field>
+            <field name="arch" type="xml">
+                <form string="patient info">
+                    <group >
+                        <field name="patient_id" />
+
+                    </group>
+                    <footer>
+                        <button name="xls_report" string="Print Excel" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    <record id="xls_report_action" model="ir.actions.act_window">
+        <field name="name">Patient Details</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.wiz</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="xls_report_form"/>
+        <field name="target">new</field>
+    </record>
+    <!-- xlxs report -->
+ <record id="xls_report_down" model="ir.actions.report">
+     <field name="name">Patient details</field>
+     <field name="report_type">xlsx</field>
+     <field name="model">patient.wiz</field>
+     <field name="report_name">doctorapiontement.xls_report_down</field>
+     <field name="report_file">doctorapiontement.xls_report_down</field>
+
+     <field name="binding_type">report</field>
+    </record>
+<!--custom form -->
+    <record model="ir.ui.view" id="vetapp.animal_form">
+        <field name="name">Patient</field>
+        <field name="model">patient.form</field>
+        <field name="arch" type="xml">
+            <form>
+<button name="%(xls_report_action)d" string="Print Excel sheet" type="action" class="btn-primary"/>
+
+                <sheet>
+<widget name="web_ribbon" title="Admitted" bg_color="bg-success" attrs="{'invisible': [('admitted','=',False)]}"/>
+<!--                    <field name="image_medium" widget="Image" class="oe_avatar"/>-->
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Enter Patient name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Patient Info">
+                            <field name="patient_id"/>
+                            <field name="ph_no"  />
+                            <field name="doctor_name" options="{'no_create':True}"/>
+                            <field name="address"/>
+                            <field name="admitted"/>
+                            <field name="room_id" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
+                            <field name="wardname" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
+                            <field name="floorno" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
+
+                        </group>
+                        <group string="Other Info">
+                            <field name="birthdate"/>
+                            <field name="age"/>
+                            <field name="gender"/>
+                            <field name="blood_group"/>
+
+                        </group>
+
+                    </group>
+                    <notebook>
+                        <page string="Pervious History" name="notes">
+                            <field name="notes"/>
+                        </page>
+                        <page string="Reports" name="reports">
+                           <field name="reports" widget="many2many_binary" class="oe_avatar"/>
+
+                        </page>
+                        <page string="Diagnosis" name="diagnosis">
+                            <field name="diagnosis_ids" />
+                        </page>
+
+
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="patient_appiont_view">
+        <field name="name">calendar.appointment.type.form.pat</field>
+        <field name="model">calendar.appointment.type</field>
+        <field name="inherit_id" ref="website_calendar.calendar_appointment_type_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='employee_ids']" position="replace">
+
+                 <field name="dct_name" options="{'no_create':True}"/>
+
+            </xpath>
+<!--  <xpath expr="//field[@name='employee_ids']" position="replace">-->
+
+<!--                 <field name="dct_name" options="{'no_create':True}"/>-->
+
+<!--            </xpath>-->
+
+        </field>
+
+    </record>
+
+    <!--bill form -->
+     <record model="ir.ui.view" id="bill_view">
+        <field name="name">bill.view</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_type']" position="replace">
+
+                 <field name="customer_name" />
+                <field name="seller_name"/>
+
+            </xpath>
+  <xpath expr="//field[@name='destination_account_id']" position="replace">
+
+
+                <field name="ph_no"/>
+
+            </xpath>
+
+
+
+        </field>
+
+    </record>
+
+
+
+   <!--kanban view code -->
+    <record model="ir.ui.view" id="view_app_doctor_kanban">
+        <field name="name">view.app.doctor.kanban</field>
+        <field name="model">doctor.list</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+<!--                <field name="speyorneuter"/>-->
+<!--                <field name="aggresive" />-->
+<!--                <field name="specialdiet"/>-->
+<!--                <field name="specificpic"/>-->
+                <templates>
+                    <t t-name="kanban-box">
+<!--                        <t t-set="speyorneuter" t-value="record.speyorneuter.raw_value" />-->
+<!--                        <t t-set="aggresive" t-value="record.aggresive.raw_value"/>-->
+<!--                        <t t-set="specialdiet" t-value="record.specialdiet.raw_value"/>-->
+                        <div t-attf-class="oe_kanban_global_click"> <!-- make it clickable -->
+
+                            <div class="oe_kanban_details">
+                                   <div class="0_kanban_Image">
+                                <img name="animal"
+                                     t-att-src="kanban_image('doctor.list', 'image_medium', record.id.raw_value)" style="max-width: 70px; max-height: 80px;"/>
+                            </div>
+                           <div>
+                                <ul>
+                                    <li class="float-right" style="margin-top:-28px">
+                                        <h3>
+                                            <field name="name"/>
+                                        </h3>
+                                    </li>
+
+                                    <li class="float-right mb4">
+                                        <strong>Specialization:</strong>
+                                        <field name="specialization"/>
+                                    </li>
+
+                                    <li>
+                                        <strong>Phone No:</strong>
+                                        <field name="ph_no"/>
+                                    </li>
+
+
+
+                                </ul>
+
+                               </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="room_list">
+        <field name="name">Room list</field>
+        <field name="model">room.list</field>
+        <field name="arch" type="xml">
+            <tree string="Rooms">
+                <field name="name"/>
+                <field name="floor_no"/>
+                <field name="ward_no"/>
+
+            </tree>
+        </field>
+    </record>
+     <!-- add search view in app-->
+    <record id="view_doctor_search" model="ir.ui.view">
+        <field name="name">doctor.list.select</field>
+        <field name="model">doctor.list</field>
+        <field name="arch" type="xml">
+            <search string="Search Doctor">
+
+                <filter string="Specialization" name="Doctor_Specialization"  domain="" context="{'search_default_specialization_doctors':1}"/>
+
+                <group string="Group By">
+                    <filter string="Specialization" name="Doctor" domain="" context="{'group_by':'specialization'}"/>
+
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!--menu item-->
+<record id="vetclinic_action" model="ir.actions.act_window">
+        <field name="name">patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient.form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record id="dcotor_action" model="ir.actions.act_window">
+        <field name="name">Doctor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">doctor.list</field>
+        <field name="view_mode">kanban,form,tree</field>
+    </record>
+    <record id="apt_action" model="ir.actions.act_window">
+        <field name="name">Appiontment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">calendar.appointment.type</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+     <record id="room_list_action" model="ir.actions.act_window">
+        <field name="name">Room List</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">room.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+      <record id="bill_list_action" model="ir.actions.act_window">
+        <field name="name">Bill</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="vetapp_root"
+              name="Doctor appionment"/>
+
+    <menuitem id="vetapp_views_root"
+              name="Patients"
+              parent="vetapp_root"
+              action="vetclinic_action"/>
+     <menuitem id="doctor_root"
+               name="Doctor"
+               parent="vetapp_root"
+               action="dcotor_action"/>
+     <menuitem id="apt_root"
+               name="appointment"
+               parent="vetapp_root"
+               action="apt_action"/>
+    <menuitem id="room_list_root"
+              name="Rooms"
+              parent="vetapp_root"
+              action="room_list_action"/>
+<menuitem id="bill_list_root"
+              name="BiLL"
+              parent="vetapp_root"
+              action="bill_list_action"/>
+</odoo>

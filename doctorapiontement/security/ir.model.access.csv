@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patient_form,access.patient.form,model_patient_form,,1,1,1,1
+access_doctor_list,access.doctor.list,model_doctor_list,base.group_user,1,1,1,1
+access_patient_diagnosis,access.patient.diagnosis,model_patient_diagnosis,base.group_user,1,1,1,1
+access_patient_symptoms,access.patient.symptoms,model_patient_symptoms,base.group_user,1,1,1,1
+access_patient_treatment,access.patient.treatment,model_patient_treatment,base.group_user,1,1,1,1
+access_room_list,access.room.list,model_room_list,base.group_user,1,1,1,1
+access_patient_wiz,access_patient_wiz,model_patient_wiz,base.group_user,1,1,1,1
