@@ -1,0 +1,498 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* doctorapiontement
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-10-26 10:47+0000\n"
+"PO-Revision-Date: 2021-10-26 10:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__birthdate
+msgid " Birthdate"
+msgstr "تاريخ الولادة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__ph_no
+msgid " Phone Number"
+msgstr "رقم الهاتف"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.report_student_id_card
+msgid "<strong>Birthdate:</strong>"
+msgstr "تاريخ الولادة"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.report_student_id_card
+msgid "<strong>Gender:</strong>"
+msgstr "جنس تذكير أو تأنيث"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.report_student_id_card
+msgid "<strong>Ph No:</strong>"
+msgstr "رقم الهاتف"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.view_app_doctor_kanban
+msgid "<strong>Phone No:</strong>"
+msgstr "رقم الهاتف"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.view_app_doctor_kanban
+msgid "<strong>Specialization:</strong>"
+msgstr "تخصص"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__address
+msgid "Address"
+msgstr "عنوان المنزل"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__admitted
+msgid "Admitted or not"
+msgstr "اعترف أم لا"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__age
+msgid "Age"
+msgstr "سن"
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.apt_action
+msgid "Appiontment"
+msgstr "ميعاد"
+
+#. module: doctorapiontement
+#: model:ir.ui.menu,name:doctorapiontement.bill_list_root
+msgid "BiLL"
+msgstr "مشروع قانون"
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.bill_list_action
+msgid "Bill"
+msgstr "مشروع قانون"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__blood_group
+msgid "Blood Group"
+msgstr "فصيلة الدم"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.xls_report_form
+msgid "Cancel"
+msgstr "يلغي"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__create_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__create_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__create_date
+msgid "Created on"
+msgstr "تم إنشاؤها على"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment__customer_name
+msgid "Customer Name"
+msgstr "اسم الزبون"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__diagnosis_ids
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__diagnosis
+msgid "Diagnosis"
+msgstr "تشخبص"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__code
+msgid "Diagnosis code"
+msgstr "كود التشخيص"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_product_template__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_report_doctorapiontement_xls_report_down__display_name
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__display_name
+msgid "Display Name"
+msgstr "الاسم المعروض"
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.dcotor_action
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__doctor_name
+#: model:ir.ui.menu,name:doctorapiontement.doctor_root
+msgid "Doctor"
+msgstr "طبيبة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type__dct_name
+msgid "Doctor Name"
+msgstr "اسم الطبيب"
+
+#. module: doctorapiontement
+#: model:ir.ui.menu,name:doctorapiontement.vetapp_root
+msgid "Doctor appionment"
+msgstr "تعيين طبيب"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__email
+msgid "Email"
+msgstr "بريد الالكتروني"
+
+#. module: doctorapiontement
+#: model:ir.model.fields.selection,name:doctorapiontement.selection__doctor_list__gender__female
+#: model:ir.model.fields.selection,name:doctorapiontement.selection__patient_form__gender__female
+msgid "Female"
+msgstr "أنثى"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__floorno
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__floor_no
+msgid "Floor No"
+msgstr "رقم الطابق"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__gender
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__gender
+msgid "Gender"
+msgstr "جنس تذكير أو تأنيث"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.view_doctor_search
+msgid "Group By"
+msgstr "مجموعة من"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_product_template__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_report_doctorapiontement_xls_report_down__id
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__id
+msgid "ID"
+msgstr "المُعرف"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_product_template____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_report_doctorapiontement_xls_report_down____last_update
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list____last_update
+msgid "Last Modified on"
+msgstr "آخر تعديل في"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__write_uid
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__write_date
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: doctorapiontement
+#: model:ir.model.fields.selection,name:doctorapiontement.selection__doctor_list__gender__male
+#: model:ir.model.fields.selection,name:doctorapiontement.selection__patient_form__gender__male
+msgid "Male"
+msgstr "الذكر"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__name_id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__name
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__note
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__note
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__notes
+msgid "Notes"
+msgstr "ملحوظات"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_calendar_appointment_type
+msgid "Online Appointment Type"
+msgstr "نوع الموعد عبر الإنترنت"
+
+#. module: doctorapiontement
+#: model:ir.model.fields.selection,name:doctorapiontement.selection__patient_form__gender__other
+msgid "Other"
+msgstr "آخر"
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.xls_report_action
+#: model:ir.actions.report,name:doctorapiontement.action_patient_details
+msgid "Patient Details"
+msgstr "تفاصيل المريض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_wiz__patient_id
+msgid "Patient Name"
+msgstr "اسم المريض"
+
+#. module: doctorapiontement
+#: model:ir.actions.report,name:doctorapiontement.xls_report_down
+msgid "Patient details"
+msgstr "تفاصيل المريض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__patient_id
+msgid "Patient id"
+msgstr "رقم المريض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__name
+msgid "Patient name"
+msgstr "اسم المريض"
+
+#. module: doctorapiontement
+#: model:ir.ui.menu,name:doctorapiontement.vetapp_views_root
+msgid "Patients"
+msgstr "المرضى"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_account_payment
+msgid "Payments"
+msgstr "المدفوعات"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__notes
+msgid "Pervious History"
+msgstr "التاريخ السابق"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment__ph_no
+msgid "Phone No"
+msgstr "رقم الهاتف"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__ph_no
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.xls_report_form
+msgid "Print Excel"
+msgstr "اطبع إكسل"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__product_id
+msgid "Product"
+msgstr "المنتج"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_product_template
+msgid "Product Template"
+msgstr "قالب المنتج"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__reports
+msgid "Reports"
+msgstr "التقارير"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__room_id
+msgid "Room"
+msgstr "مجال"
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.room_list_action
+msgid "Room List"
+msgstr "قائمة غرفة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__name
+msgid "Room No"
+msgstr "رقم الغرفة"
+
+#. module: doctorapiontement
+#: model:ir.ui.menu,name:doctorapiontement.room_list_root
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.room_list
+msgid "Rooms"
+msgstr "غرف"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.view_doctor_search
+msgid "Search Doctor"
+msgstr "ابحث عن دكتور"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_account_payment__seller_name
+msgid "Seller Name"
+msgstr "البائع اسم"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__specialization
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.view_doctor_search
+msgid "Specialization"
+msgstr "تخصص"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__symptom_id
+msgid "Symptom"
+msgstr "علامة مرض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_symptoms__code
+msgid "Symptom code"
+msgstr "رمز الأعراض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__symptoms_ids
+msgid "Symptoms"
+msgstr "أعراض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_diagnosis__treatment_id
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__treatment
+#: model:ir.model.fields,field_description:doctorapiontement.field_product_product__treatment_ids
+#: model:ir.model.fields,field_description:doctorapiontement.field_product_template__treatment_ids
+msgid "Treatment"
+msgstr "علاج او معاملة"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_treatment__code
+msgid "Treatment code"
+msgstr "كود العلاج"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_patient_form__wardname
+#: model:ir.model.fields,field_description:doctorapiontement.field_room_list__ward_no
+msgid "Ward name"
+msgstr "اسم الجناح"
+
+#. module: doctorapiontement
+#: model:ir.ui.menu,name:doctorapiontement.apt_root
+msgid "appointment"
+msgstr "موعد"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_doctor_list
+msgid "doctor.list"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__image_medium
+msgid "medium sized image"
+msgstr "صورة متوسطة الحجم"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_doctor_list__name
+msgid "name"
+msgstr "اسم"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type__orientation_compla
+msgid "orientation compla"
+msgstr ""
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.patient_list
+msgid "patient"
+msgstr "المريض"
+
+#. module: doctorapiontement
+#: model:ir.model.fields,field_description:doctorapiontement.field_calendar_appointment_type__patient_name
+msgid "patient Name"
+msgstr "اسم المريض"
+
+#. module: doctorapiontement
+#: model_terms:ir.ui.view,arch_db:doctorapiontement.xls_report_form
+msgid "patient info"
+msgstr "معلومات المريض"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_patient_diagnosis
+msgid "patient.diagnosis"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_patient_form
+msgid "patient.form"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_patient_symptoms
+msgid "patient.symptoms"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_patient_treatment
+msgid "patient.treatment"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_patient_wiz
+msgid "patient.wiz"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.actions.act_window,name:doctorapiontement.vetclinic_action
+msgid "patients"
+msgstr "المرضى"
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_report_doctorapiontement_xls_report_down
+msgid "report.doctorapiontement.xls_report_down"
+msgstr ""
+
+#. module: doctorapiontement
+#: model:ir.model,name:doctorapiontement.model_room_list
+msgid "room.list"
+msgstr ""
