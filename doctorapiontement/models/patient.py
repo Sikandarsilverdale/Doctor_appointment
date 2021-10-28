@@ -30,6 +30,22 @@ class pateint_form(models.Model):
     room_id = fields.Many2one('room.list')
     wardname = fields.Char(related='room_id.ward_no')
     floorno = fields.Char(related='room_id.floor_no')
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('created', 'Created'),
+        ('confirm', 'Confirm'), ],  required=True, default='draft')
+
+    def button_done(self):
+        for rec in self:
+            rec.write({'state': 'confirm'})
+
+    def button_reset(self):
+        for rec in self:
+            rec.state = 'draft'
+
+    def button_cancel(self):
+        for rec in self:
+            rec.state = 'created'
 
 
 class doctor_list(models.Model):
@@ -45,6 +61,8 @@ class doctor_list(models.Model):
     email = fields.Char('Email')
     # workinghours=fields.Datetime('select working hours')
     specialization = fields.Char('Specialization')
+    user_id = fields.Many2one('res.users')
+
 
 class patient_wiz(models.TransientModel):
     _name = 'patient.wiz'
@@ -62,6 +80,8 @@ class patient_wiz(models.TransientModel):
             'patient': patient,
             'form_data': self.read()[0]
         }
+        # import pdb
+        # pdb.set_trace()
         return self.env.ref('doctorapiontement.xls_report_down').report_action(self, data=data)
 
 

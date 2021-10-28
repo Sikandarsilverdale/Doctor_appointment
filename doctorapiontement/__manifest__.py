@@ -15,6 +15,7 @@
     'depends': ['base','website_calendar','report_xlsx'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/patient.xml',
         'views/template.xml',
         'report/patient_detail_template.xml',
