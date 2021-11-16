@@ -10,7 +10,7 @@
         Select the modules to un-installed from the tree view and click on the action un-installed!!!
     """,
     "author": "Silverdale",
-    "website": "https://silverdaletech.odoo.com",
+    "website": "https://www.silverdaletech.com",
 
     "category": "base",
     "version": "14.0",
