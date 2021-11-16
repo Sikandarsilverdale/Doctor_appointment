@@ -1,20 +1,37 @@
-from odoo import api, fields, models
+from odoo import api, fields, models,_
 from datetime import datetime, timedelta
+from odoo.exceptions import UserError, ValidationError
 
 class pateint_form(models.Model):
     _name = 'patient.form'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = "patient_id desc"
+
+    def name_get(self):
+        # name get function for the model executes automatically
+        res = []
+        for rec in self:
+            res.append((rec.id, '%s - %s' % (rec.name, rec.patient_id)))
+        return res
 
     @api.depends('birthdate')
     def _compute_age(self):
         for rec in self:
-            if rec.birthdate: rec.age = (fields.date.today() - rec.birthdate) / timedelta(days=365.2425)
+            if rec.birthdate:rec.age = (fields.date.today() - rec.birthdate) / timedelta(days=365.2425)
 
-    name = fields.Char(string='Patient name', required=True, tracking=True)
-    ph_no = fields.Char(string=' Phone Number')
+
+    #validation error is used to restrict value like age is not less then zero
+    @api.constrains('age')
+    def _age_check(self):
+        for rec in self:
+            if self.age <= 0:
+                raise ValidationError("Please enter value greater than zero")
+
+    name = fields.Char(string='Patient name', required=True, tracking=True, )
+    ph_no = fields.Char(string=' Phone Number', track_visibility='always', size=10)
     address = fields.Char(string='Address')
     name_id = fields.Many2one('appointment.list')
-    patient_id = fields.Char(string='Patient id', required=True)
+    patient_id = fields.Char(string='Patient Id', required=True, copy=False, readonly=True,  default=lambda self: _('New'))
     # _sql_constraints = [('patient_id_unique', 'UNIQUE (patient_id)',
     #                      "The User ID must be unique, this one is already assigned to another user.")]
     birthdate = fields.Date(string=' Birthdate')
@@ -26,8 +43,11 @@ class pateint_form(models.Model):
     doctor_name = fields.Many2one('doctor.list', string="Doctor")
     diagnosis_ids = fields.Many2many('patient.diagnosis')
     symptoms_ids = fields.Many2many('patient.symptoms')
+    # image_medium =fields.Binary(attachment=True)
     admitted = fields.Boolean('Admitted or not')
+    active = fields.Boolean(string='Active', default=True)
     room_id = fields.Many2one('room.list')
+    user_signature = fields.Binary(string='Doctor Signature')
     wardname = fields.Char(related='room_id.ward_no')
     floorno = fields.Char(related='room_id.floor_no')
     state = fields.Selection([
@@ -38,6 +58,13 @@ class pateint_form(models.Model):
     def button_done(self):
         for rec in self:
             rec.write({'state': 'confirm'})
+            return {
+                'effect': {
+                    'fadeout': 'slow',
+                    'message': 'confirmed',
+                    'type': 'rainbow_man',
+                }
+            }
 
     def button_reset(self):
         for rec in self:
@@ -47,6 +74,17 @@ class pateint_form(models.Model):
         for rec in self:
             rec.state = 'created'
 
+    @api.model
+    def create(self, vals):
+        if vals.get('patient_id', _('New')) == _('New'):
+            vals['patient_id'] = self.env['ir.sequence'].next_by_code('patient.form') or _('New')
+            result = super(pateint_form, self).create(vals)
+            return result
+
+    @api.model
+    def send_reminder(self):
+        print("Create patient")
+
 
 class doctor_list(models.Model):
     _name = 'doctor.list'
@@ -55,13 +93,14 @@ class doctor_list(models.Model):
     name = fields.Char("name")
     image_medium = fields.Binary("medium sized image", attachmen=True)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female')], required=True)
-    # patient_name=fields.One2many('patient.form','patient_id')
+    # patient_name=fields.Many2one('patient.form')
     # apt_patient = fields.One2many('calendar.appointment.type','patient_name')
     ph_no = fields.Char('Phone Number')
     email = fields.Char('Email')
     # workinghours=fields.Datetime('select working hours')
     specialization = fields.Char('Specialization')
     user_id = fields.Many2one('res.users')
+    active = fields.Boolean(string='Active', default=True)
 
 
 class patient_wiz(models.TransientModel):
@@ -123,6 +162,14 @@ class bill_temp(models.Model):
     customer_name = fields.Char('Customer Name', required=True)
     seller_name = fields.Char('Seller Name')
     ph_no = fields.Char('Phone No')
+    order_id = fields.Many2one('sale.order', string="Sale Order")
+    amountfinal = fields.Monetary(string="Total Amount", related='order_id.amount_total')
+
+class SaleOrderInherit(models.Model):
+    _inherit = 'sale.order'
+
+    patient_name = fields.Char(string='Patient Name')
+
 
 
 class temp_product(models.Model):
@@ -150,6 +197,7 @@ class PartnerXlsx(models.AbstractModel):
     def generate_xlsx_report(self, workbook, data, partners):
          # print("mmsdf",data['patient'])
          sheet = workbook.add_worksheet('patient')
+         # sheet.right_to_left()
          bold = workbook.add_format({'bold': True})
          sheet.set_column('D:D',12)
          sheet.set_column('E:E',13)
@@ -172,3 +220,5 @@ class PartnerXlsx(models.AbstractModel):
         #     sheet = workbook.add_worksheet(report_name[:31])
         #     bold = workbook.add_format({'bold': True})
         #     sheet.write(0, 0, obj.name, bold)
+
+

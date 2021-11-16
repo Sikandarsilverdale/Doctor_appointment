@@ -1,6 +1,6 @@
 from odoo import api, fields, models
 class PatientCardReport(models.AbstractModel):
-    _name = 'report.doctorapiontement.report_student_id_card'
+    _name = 'report.doctorapiontement.action_patient_details'
     _description = 'Patient card Report'
 
     # @api.model

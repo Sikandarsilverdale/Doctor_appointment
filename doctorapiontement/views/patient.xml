@@ -4,18 +4,21 @@
         <field name="name">Patient list</field>
         <field name="model">patient.form</field>
         <field name="arch" type="xml">
-            <tree string="patient">
-                <field name="name"/>
+            <tree string="patient" banner_route="/doctorapiontement/banner" decoration-info="state == 'draft'" decoration-muted="state == 'created'" decoration-success="state == 'confirm'">
+                <field name="name" />
                 <field name="patient_id"/>
-                <field name="birthdate"/>
+                <field name="birthdate" />
                 <field name="ph_no"/>
                 <field name="gender"/>
+                <field name="age"  sum="avg of age"/>
                 <field name="address"/>
+                <field name="state"/>
 
 
             </tree>
         </field>
     </record>
+
 <!--wizard code-->
      <record id="xls_report_form" model="ir.ui.view">
             <field name="name">xls.report.form</field>
@@ -52,16 +55,44 @@
      <field name="binding_type">report</field>
     </record>
 <!--custom form -->
-    <record model="ir.ui.view" id="vetapp.animal_form">
+    <record model="ir.ui.view" id="animal_form">
         <field name="name">Patient</field>
         <field name="model">patient.form</field>
         <field name="arch" type="xml">
             <form>
-<button name="%(xls_report_action)d" string="Print Excel sheet" type="action" class="btn-primary"/>
+                <header>
+
+                    <button name="%(xls_report_action)d" string="Print Excel sheet" type="action" class="btn-primary"/>
+                    <button name="button_reset" string="Reset to Draft" states="created, confirm" class="oe_highlight"
+                            type="object" confirm="Are you sure you want to put in draft"/>
+                    <button name="button_cancel" string="Created" type="object"  />
+                    <button name="button_done" string="Confirm" class="oe_highlight" type="object" confirm="Are you sure you want to confirm"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="draft,created,confirm"/>
+                </header>
+
 
                 <sheet>
-<widget name="web_ribbon" title="Admitted" bg_color="bg-success" attrs="{'invisible': [('admitted','=',False)]}"/>
-<!--                    <field name="image_medium" widget="Image" class="oe_avatar"/>-->
+                    <!-- smart button add action of reset button only to check functionality-->
+                    <div class="oe_button_box" name="button_box">
+                         <button name="button_reset"
+                            class="oe_stat_button"
+                            icon="fa-file-text-o"
+                            type="object">
+                            <field name="name"  string="Receipts" />
+
+                        </button>
+<!--                         <button name="%(view_app_doctor_kanban)d"-->
+<!--                            class="oe_stat_button"-->
+<!--                            icon="fa-file-text-o"-->
+<!--                            type="action">-->
+<!--                            <field name="name"  string="Doctors" />-->
+
+<!--                        </button>-->
+                    </div>
+                    <widget name="web_ribbon" title="Admitted" bg_color="bg-success"
+                            attrs="{'invisible': [('admitted','=',False)]}"/>
+<!--                                        <field name="image_medium" widget="image" class="oe_avatar"/>-->
                     <div class="oe_title">
                         <h1>
                             <field name="name" placeholder="Enter Patient name"/>
@@ -70,13 +101,16 @@
                     <group>
                         <group string="Patient Info">
                             <field name="patient_id"/>
-                            <field name="ph_no"  />
-                            <field name="doctor_name" options="{'no_create':True}"/>
+                            <field name="ph_no" />
+                            <field name="doctor_name"  style="background:Blue; color:white;" options="{'no_open : True','no_create':True}"/>
                             <field name="address"/>
                             <field name="admitted"/>
-                            <field name="room_id" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
-                            <field name="wardname" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
-                            <field name="floorno" attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}" />
+                            <field name="room_id"
+                                   attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}"/>
+                            <field name="wardname"
+                                   attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}"/>
+                            <field name="floorno"
+                                   attrs="{'invisible': [('admitted','=',False)], 'required': [('admitted','=',True)]}"/>
 
                         </group>
                         <group string="Other Info">
@@ -84,7 +118,8 @@
                             <field name="age"/>
                             <field name="gender"/>
                             <field name="blood_group"/>
-
+                            <field name="active" invisible="1"/>
+                            <field name="user_signature" widget="signature"/>
                         </group>
 
                     </group>
@@ -93,11 +128,11 @@
                             <field name="notes"/>
                         </page>
                         <page string="Reports" name="reports">
-                           <field name="reports" widget="many2many_binary" class="oe_avatar"/>
+                            <field name="reports" widget="many2many_binary" class="oe_avatar"/>
 
                         </page>
                         <page string="Diagnosis" name="diagnosis">
-                            <field name="diagnosis_ids" />
+                            <field name="diagnosis_ids"/>
                         </page>
 
 
@@ -116,9 +151,25 @@
         <field name="model">calendar.appointment.type</field>
         <field name="inherit_id" ref="website_calendar.calendar_appointment_type_view_form"/>
         <field name="arch" type="xml">
+<!--            <field name="appointment_tz" attrs="{'invisible':1}"/>-->
             <xpath expr="//field[@name='employee_ids']" position="replace">
 
-                 <field name="dct_name" options="{'no_create':True}"/>
+                 <field name="dct_name"  options="{'no_create':True}"/>
+
+            </xpath>
+            <xpath expr="//field[@name='appointment_tz']" position="attributes">
+
+                 <attribute name="invisible">True</attribute>
+
+            </xpath>
+             <xpath expr="//field[@name='location']" position="attributes">
+
+                 <attribute name="invisible">True</attribute>
+
+            </xpath>
+             <xpath expr="//field[@name='country_ids']" position="attributes">
+
+                 <attribute name="invisible">True</attribute>
 
             </xpath>
 <!--  <xpath expr="//field[@name='employee_ids']" position="replace">-->
@@ -141,6 +192,8 @@
 
                  <field name="customer_name" />
                 <field name="seller_name"/>
+                <field name="order_id"/>
+                <field name="amountfinal" widget="monetary"/>
 
             </xpath>
   <xpath expr="//field[@name='destination_account_id']" position="replace">
@@ -163,7 +216,7 @@
         <field name="name">view.app.doctor.kanban</field>
         <field name="model">doctor.list</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_group_by="user_id">
                 <field name="id"/>
                 <field name="name"/>
 <!--                <field name="speyorneuter"/>-->
@@ -180,7 +233,7 @@
                             <div class="oe_kanban_details">
                                    <div class="0_kanban_Image">
                                 <img name="animal"
-                                     t-att-src="kanban_image('doctor.list', 'image_medium', record.id.raw_value)" style="max-width: 70px; max-height: 80px;"/>
+                                     t-att-src="kanban_image('doctor.list', 'image_medium', record.id.raw_value)" style="max-width: 70px; max-height: 80px;" />
                             </div>
                            <div>
                                 <ul>
@@ -237,6 +290,8 @@
                     <filter string="Specialization" name="Doctor" domain="" context="{'group_by':'specialization'}"/>
 
                 </group>
+                <separator/>
+                    <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
             </search>
         </field>
     </record>
@@ -273,7 +328,7 @@
         <field name="view_mode">tree,form</field>
     </record>
     <menuitem id="vetapp_root"
-              name="Doctor appionment"/>
+              name="Doctor appionment" web_icon="doctorapiontement,static/description/icon.png"/>
 
     <menuitem id="vetapp_views_root"
               name="Patients"
@@ -295,4 +350,6 @@
               name="BiLL"
               parent="vetapp_root"
               action="bill_list_action"/>
+
+
 </odoo>

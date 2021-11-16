@@ -10,4 +10,15 @@
        <field name="binding_model_id" ref="model_patient_form"/>
         <field name="binding_type">report</field>
 </record>
+    <!-- inherited action for pdf report using the pervious report template-->
+        <record id="action_patient_details_report" model="ir.actions.report">
+   <field name="name">Patient Details short</field>
+   <field name="model">patient.form</field>
+   <field name="report_type">qweb-pdf</field>
+   <field name="report_name">doctorapiontement.invoice_cop_short</field>
+   <field name="report_file">doctorapiontement.invoice_cop_short</field>
+
+       <field name="binding_model_id" ref="model_patient_form"/>
+        <field name="binding_type">report</field>
+</record>
 </odoo>

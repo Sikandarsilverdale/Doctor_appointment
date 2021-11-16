@@ -12,14 +12,18 @@
     """,
     'category': 'productivity',
     'website': 'https://www.odoo.com',
-    'depends': ['base','website_calendar','report_xlsx'],
+    'depends': ['base','website_calendar','report_xlsx',"web"],
     'data': [
         'security/ir.model.access.csv',
         'security/security.xml',
+        'data/data.xml',
+        'data/cron_data.xml',
         'views/patient.xml',
         'views/template.xml',
+        'views/webtemplet.xml',
         'report/patient_detail_template.xml',
         'report/report.xml'
+
 
     ],
     'demo': [],
