@@ -13,5 +13,5 @@ class projectTask(models.Model):
         other_running_tasks = self.search([('user_timer_id', '!=', False), ('user_timer_id.user_id', '=', self.env.user.id), ('id', '!=', self.id)])
         if other_running_tasks and any([x.is_timer_running for x in other_running_tasks.filtered(lambda t: t.user_timer_id).mapped('user_timer_id')]):
             name = other_running_tasks.name_get()
-            raise UserError(f'Timesheet already in progress: {name}')
+            raise UserError(f'There is a timesheet in progress on {name} task:')
         super(projectTask, self).action_timer_start()
