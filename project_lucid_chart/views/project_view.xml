@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- project.project inherit form view -->
+    <record id="inherit_project_edit_view" model="ir.ui.view">
+        <field name="name">project.project.inherit.view.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]" position="after">
+                <page name="lucidchart" string="LucidChart">
+                    <group class="oe_edit_only">
+                        <field name="luci_chart_url"/>
+                    </group>
+                    <field name="luci_chart" widget="html"/>
+                </page>
+            </xpath>
+            <xpath expr="//form" position="inside">
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
